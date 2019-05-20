@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Campaigns Management Page</title>
+  </head>
+  <body>
+    <h1>Product Management Page</h1>
+    <form method="post" action="/addCampaign" enctype="multipart/form-data">
+      <label for="id">id:
+        <input type="text" name="id" /><br>
+      </label>
+      <label for="story">story:
+        <input type="text" name="story" /><br>
+      </label>
+      <label for="image">image:<br/>
+        <input type="file" name="image"><br/>
+      </label>
+      <button type="submit">submit</button>
+    </form>
+    <p id="message"></p>
+  </body>
+</html>
+

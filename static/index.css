@@ -1,0 +1,455 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 1000px;
+}
+
+#header{
+  height: 70px;
+  margin: 0px;
+}
+
+#p_body{
+  width: 80%;
+  height: 100% + 1000px;
+  display: block;
+  margin: 0 auto;
+  min-height: calc(100vh - 500px);
+}
+
+
+#body{
+  width: 70%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  min-height: calc(100vh - 500px);
+}
+
+#footer{
+  float: right;
+  background-color: #313538;
+  height: 103px;
+  width: 100%;
+}
+
+#s_body{
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+#p_footer{
+  background-color: #313538;
+  height: 103px;
+  width: 100%;
+  position:absolute;
+  bottom:0px;
+  left:0px;
+}
+
+a{
+  text-decoration:none;
+  color: #3f3a3a;
+}
+
+.footer a{
+  color: #f5f5f5;
+}
+
+ul{
+  list-style:none;
+}
+
+ul li{
+  display:inline;
+}
+
+#footer ul{
+  float:left;
+  margin: 40px 2% 41px 13%;
+}
+
+#item{
+  border-right:0.5px solid #3f3a3a;
+  margin-right: 30px;
+}
+
+#footeritem_1,#footeritem_2,#footeritem_3,#footeritem_4{
+  border-right:0.5px solid #f5f5f5;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.logo{
+  margin: 12px 50px 12px 30px;
+  /* padding:26px 96px 26px 60px; */
+  width: 13.4%;
+  object-fit: contain;
+  float:left;
+}
+
+.menu{
+  margin:20px 0px 15px 0px;
+  width: 5.2%;
+  height: 1.46%;
+  font-family: PingFangTC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 15px;
+  text-align: left;
+  float:left;
+  color: #3f3a3a;
+}
+
+#search{
+  margin: 10px;
+  width: 150px;
+  height: 30px;
+  border-radius:40px;
+  border: solid 1px #979797;
+  float: right;
+}
+
+#line_1{
+  width: 1px;
+  height: 15px;
+  margin-left: 20px;
+  margin-top: 8px;
+  margin-right: 8px;
+  background-color: #8b572a;
+  float:left;
+}
+
+button{
+  border:1px #e0000000 solid;
+  background-color: #e0000000;
+  float: right;
+  padding: 0;
+}
+
+#searchimg {
+  margin-right: 3px;
+  width: 25px;
+}
+#profilebutton{
+  margin: 10px 25px 10px 0;
+}
+
+#cartbutton{
+  margin: 10px 20px 10px 20px;
+}
+
+#profile{
+  width: 30px;
+  float: right;
+}
+
+#cart{
+  width: 30px;
+  float: right;
+}
+
+#line {
+  width: 100%;
+  height: 20px;
+  background-color: #313538;
+}
+
+#description{
+  position:absolute;
+  left:20%;
+  top:180px;
+  font-family: PingFangTC;
+  font-size: 18px;
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.9;
+  letter-spacing: normal;
+  text-align: left;
+  color: #070707;
+}
+
+#campaignimg{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer{
+  width: 100%;
+  height: 22px;
+  font-family: PingFangTC;
+  color: #f5f5f5;
+  font-size: 10px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+#copyright{
+  margin: 45px 15% 0 0;
+  float:right;
+  font-family: PingFangTC;
+  font-size: 5px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #828282;
+}
+
+#linee{
+  margin: 35px 20px 0 0;
+  width: 30px;
+  float: right;
+}
+
+#facebook{
+  margin: 35px 20px 0 0;
+  width: 30px;
+  float: right;
+}
+
+#twitter{
+  margin: 35px 20px 0 0;
+  width: 30px;
+  float: right;
+}
+
+.productimages{
+  width: 100%;
+}
+
+.productdetail{
+   font-family: NotoSansCJKtc;
+   font-size: 15px;
+   font-weight: normal;
+   font-style: normal;
+   font-stretch: normal;
+   line-height: normal;
+   letter-spacing: 2px;
+   color: #3f3a3a;
+   margin: 10px 0 0 0;
+}
+
+.product{
+  padding: 20px 10px 20px 10px;
+  float: left;
+  width: 30%;
+}
+
+.color{
+  width:20px;
+  height:20px;
+  margin-top:5px;
+  margin-left: 7px;
+  display:block;
+  float:left;
+}
+
+#main_image{
+  width: 100%;
+  /* padding-top: 12px; */
+}
+
+#p_title{
+  font-family: NotoSansCJKtc;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 6.4px;
+  text-align: left;
+  color: #3f3a3a;
+}
+
+#p_id{
+  font-family: NotoSansCJKtc;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 4px;
+  text-align: left;
+  color: #bababa;
+  margin-top: -12px;
+}
+
+#p_price{
+  font-family: NotoSansCJKtc;
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3f3a3a;
+  margin-bottom: -3px;
+
+}
+
+.p_details{
+  font-family: NotoSansCJKtc;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  letter-spacing: 4px;
+  text-align: left;
+  color: #3f3a3a;
+}
+
+
+#buy{
+  width: 100%;
+  height: 50px;
+  font-family: NotoSansCJKtc;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 4px;
+  text-align: center;
+  color: #ffffff;
+  border: solid 1px #979797;
+  background-color: #000000;
+  margin: 13px 0;
+}
+
+.p_size{
+  border-radius:20px;
+  background-color:#ececec;
+  color:#3f3a3a;
+  font-family: NotoSansCJKtc;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 4px;
+  text-align: left;
+  padding: 4px 8px;
+  margin-right: 7px;
+}
+
+#M{
+  padding: 4px 5px;
+}
+
+#quantity{
+  width: 110px;
+  height: 28px;
+  border: solid 1px #979797;
+  overflow:hidden;
+  vertical-align: middle;
+  display:table-cell;
+  text-align:center;
+  padding: 3px 10px;
+}
+
+#number{
+  text-align: right;
+  width: 30%;
+  color: #8b572a;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 4px;
+  background-color:transparent;
+  border:0px;
+}
+
+#details{
+  width: 85%;
+  vertical-align: top;
+}
+
+#other{
+  width: 20%;
+  display:inline;
+  font-family: NotoSansCJKtc;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #8b572a;
+}
+
+#plus,#minus{
+  margin: 0;
+  font-size: 10px;
+}
+
+.other_image{
+  max-width: 100%;
+}
+
+.other_details{
+  font-family: NotoSansCJKtc;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3f3a3a;
+}
+
+#profile{
+  width:80%;
+}
+
+.profilesubmit{
+  width: 30%;
+  height: 50px;
+  font-family: NotoSansCJKtc;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 4px;
+  text-align: center;
+  color: #ffffff;
+  border: solid 1px #979797;
+  background-color: #000000;
+  margin: 13px 13px;
+}
+
+.member{
+  width:  100%;
+}
+
+#native{
+  border-radius:3px;
+  float: left;
+  font-size: 11px;
+  line-height: 14px;
+  padding: 3px 7px;
+  color: #fff;
+  background-color: #000;
+  margin-right: 10px;
+}
+

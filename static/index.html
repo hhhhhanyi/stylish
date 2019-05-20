@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stylish</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="header">
+      <img src="img/btn-logo-01.png" class="logo">
+      <ul id="category">
+        <li class="menu" id="item"><a href="#">女裝</a></li>
+        <li class="menu" id="item"><a href="#">男裝</a></li>
+        <li class="menu"><a href="#">配件</a></li>
+      </ul>
+      <button type="button" id="profilebutton" onclick="user('profile')"><img src="img/member.png" id="profile"></button>
+      <button type="button" id="cartbutton"><img src="img/cart.png" id="cart"></button>
+      <div id="search">
+        <div id="line_1"></div>
+        <input style="background-color:transparent;border:0px;width:50%;height:100%;" type="text" name="" value="">
+        <button type="submit" id="searchbutton"><img src="img/search.png" id="searchimg"></button>
+      </div>
+    </div>
+    <div id="line"></div>
+    <div id="campaign">
+    </div>
+    <div id="body">
+    </div>
+    <p id="demo"></p>
+    <div id="footer">
+      <ul>
+        <li class="footer" id="footeritem_1"><a href="#">關於 Stylish</a></li>
+        <li class="footer" id="footeritem_2"><a href="#">服務條款</a></li>
+        <li class="footer" id="footeritem_3"><a href="#">隱私政策</a></li>
+        <li class="footer" id="footeritem_4"><a href="#">聯絡我們</a></li>
+        <li class="footer"><a href="#">FAQ</a></li>
+      </ul>
+      <p id="copyright">© 2018. All rights reserved.</p>
+      <button type="button" id="facebookbutton"><img src="img/facebook.png" id="facebook"></button>
+      <button type="button" id="twitterbutton"><img src="img/twitter.png" id="twitter"></button>
+      <button type="button" id="linebutton"><img src="img/line.png" id="linee"></button>
+    </div>
+    <script>
+      function user(user){
+        window.location = `https://hhhhhanyi.com/${user}.html`;
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.open("GET", "https://hhhhhanyi.com/api/1.0/marketing/campaigns");
+      xhr.onreadystatechange = function () {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+          console.log(this.responseText);
+          let json = JSON.parse(this.responseText).data[0];
+          document.getElementById('campaign').innerHTML = `<div id="description">${json.story}</div><img src=${json.image} id="campaignimg">`;
+          xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://hhhhhanyi.com/api/1.0/products/all");
+          xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+              let json = JSON.parse(this.responseText);
+              let data = "";
+              for (var i=0; i<json.data.length; i++){
+                data += `<div class="product"><a href="https://hhhhhanyi.com/product.html?id=${json.data[i].id}"><img src="${json.data[i].main_image}" class="productimages"></a>`;
+                for (var k=0; k<json.data[i].colors.length; k++){
+                  data += `<span class="color" style="background-color:#${json.data[i].colors[k].code};"></span>`;
+                }
+                data += `<div class="productdetail"><br><p>${json.data[i].title}</p><p>TWD.${json.data[i].price}</p></div></div>`;
+              }
+              document.getElementById('body').innerHTML = data;
+            }
+          };
+          xhr.send();
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>

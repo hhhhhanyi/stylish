@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://js.tappaysdk.com/tpdirect/v3"></script>
+    <title>checkout page</title>
+</head>
+
+<body>
+    <div style="width: 480px; margin: 50px auto;">
+        <label>CardView</label>
+        <div id="cardview-container"></div>
+        <button id="submit-button" onclick="onClick()">Get Prime</button>
+        <p id="demo"></p>
+    </div>
+    <script>
+        TPDirect.setupSDK(12348, "app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF", "sandbox");
+        TPDirect.card.setup('#cardview-container');
+
+        let submitButton = document.querySelector('#submit-button');
+        let cardViewContainer = document.querySelector('#cardview-container');
+        let data;
+        let access_token = readCookie('access_token');
+        function readCookie(name) {
+           var nameEQ = name + "=";
+           var ca = document.cookie.split(';');
+           for (var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+           }
+           return null;
+        }
+
+        function onClick() {
+          TPDirect.card.getPrime(function (result) {
+              if (result.status !== 0) {
+                  console.log('getPrime 錯誤');
+                  return;
+              }
+              var prime = result.card.prime;
+              data = {
+                "prime" : prime,
+                order: {
+                shipping: "delivery",
+                payment: "credit_card",
+                subtotal: 3000,
+                freight: 30,
+                total: 3030,
+                recipient: {
+                  name: "hanyi",
+                  phone: 0909,
+                  email: "a@a",
+                  address: "taiwan",
+                  time: "anytime"
+                },
+                list: [
+                  {
+                    id: "1",
+                    name: "上衣",
+                    price: 3000,
+                    color: {
+                      name: "白色",
+                      code: "FFFFFF"
+                    },
+                    size: "S",
+                    qty: 1
+                  }
+                ]
+                }
+              };
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", "http://3.16.251.196/api/1.0/order/checkout");
+              xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+              xhr.setRequestHeader("Authorization", 'Bearer ' + access_token);
+              xhr.setRequestHeader("x-api-key", "partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM");
+              xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                  document.getElementById('demo').innerText = this.responseText;
+                }
+              };
+              xhr.send(JSON.stringify(data));
+            });
+        }
+    </script>
+</body>
+</html>
+
