@@ -42,25 +42,25 @@
     </div>
     <script>
       function user(user){
-        window.location = `https://hhhhhanyi.com/${user}.html`;
+        window.location = `/${user}.html`;
       }
 
       var xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "https://hhhhhanyi.com/api/1.0/marketing/campaigns");
+      xhr.open("GET", "api/1.0/marketing/campaigns");
       xhr.onreadystatechange = function () {
         if(xhr.readyState === 4 && xhr.status === 200) {
           console.log(this.responseText);
           let json = JSON.parse(this.responseText).data[0];
           document.getElementById('campaign').innerHTML = `<div id="description">${json.story}</div><img src=${json.image} id="campaignimg">`;
           xhr = new XMLHttpRequest();
-          xhr.open("GET", "https://hhhhhanyi.com/api/1.0/products/all");
+          xhr.open("GET", "api/1.0/products/all");
           xhr.onreadystatechange = function () {
             if(xhr.readyState === 4 && xhr.status === 200) {
               let json = JSON.parse(this.responseText);
               let data = "";
               for (var i=0; i<json.data.length; i++){
-                data += `<div class="product"><a href="https://hhhhhanyi.com/product.html?id=${json.data[i].id}"><img src="${json.data[i].main_image}" class="productimages"></a>`;
+                data += `<div class="product"><a href="/product.html?id=${json.data[i].id}"><img src="${json.data[i].main_image}" class="productimages"></a>`;
                 for (var k=0; k<json.data[i].colors.length; k++){
                   data += `<span class="color" style="background-color:#${json.data[i].colors[k].code};"></span>`;
                 }

@@ -3,29 +3,21 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
-const https = require('https');
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const redis = require('redis');
 const fs = require('fs');
-const client = redis.createClient(); // this creates a new client
-
-
+const client = redis.createClient();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.set('httpsport', 443);
-var secret = "hanyi0831";
-var repo = "/home/hhhhhanyi/aws_cicd";
 
-var options = {
-	key: fs.readFileSync('/etc/letsencrypt/live/hhhhhanyi.com-0001/privkey.pem'),
-	cert: fs.readFileSync('/etc/letsencrypt/live/hhhhhanyi.com-0001/cert.pem'),
-	ca: fs.readFileSync('/etc/letsencrypt/live/hhhhhanyi.com-0001/chain.pem')
-};
-var httpsServer = https.createServer(options, app);
-httpsServer.listen(app.get('httpsport'));
+const apiRoutes = require('./routes/api');
+const userRoutes = require('./routes/user');
+const credentials = require('./util/credentials');
+app.use('/api/1.0', apiRoutes);
+app.use('/api/1.0', userRoutes);
 
 
 app.use(function(req, res, next) {
@@ -36,8 +28,8 @@ app.use(function(req, res, next) {
 const s3 = new aws.S3();
 
 aws.config.update({
-	accessKeyId: 'AKIAILYZAB6GNT5RRHFA',
-	secretAccessKey: '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',
+	accessKeyId: credentials.AWS.accessKeyId,
+	secretAccessKey: credentials.AWS.secretAccessKey,
 	region: 'us-east-2'
 });
 
@@ -50,16 +42,11 @@ aws.config.update({
 // 	}
 // });
 // const upload = multer({ storage: storage });
-const apiRoutes = require('./routes/api');
-const userRoutes = require('./routes/user');
-
-app.use('/api/1.0',apiRoutes);
-app.use('/api/1.0',userRoutes);
 
 const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'JIOJ24dwq9_224HU_332IWDML',
+	host     : credentials.MYSQL.host,
+	user     : credentials.MYSQL.user,
+	password : credentials.MYSQL.password,
 	database : 'stylish'
 });
 
@@ -82,7 +69,6 @@ const upload = multer({
 		},
 	})
 });
-
 
 function creProduct(id, title, category, description, price, texture, wash, place, note, story ,main_image, other_image1, other_image2){
 	let product = {id, title, category, description, price, texture, wash, place, note, story ,main_image, other_image1, other_image2};
@@ -178,7 +164,7 @@ console.log(req.files[2].location);
 	});
 
 	for(var i=0; i<=counter; i++){
-		count = "size"+i;
+		count = "size" + i;
 		size = req.body[count];
 		variants_S = req.body.variants_S[i];
 		variants_M = req.body.variants_M[i];
@@ -211,6 +197,6 @@ app.get('/addProduct',(req,res)=>{
 });
 
 app.use('/', express.static('static'));
-app.listen(80, ()=> {
+app.listen(3100, ()=> {
 	console.log("Success!!!!!!");
 });

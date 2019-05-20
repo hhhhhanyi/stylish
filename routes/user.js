@@ -4,12 +4,12 @@ const mysql = require('mysql');
 const crypto = require('crypto');
 const https = require('https');
 const request = require('request');
-
+const credentials = require('.././util/credentials.js');
 
 const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'JIOJ24dwq9_224HU_332IWDML',
+	host     : credentials.MYSQL.host,
+	user     : credentials.MYSQL.user,
+	password : credentials.MYSQL.password,
 	database : 'stylish'
 });
 

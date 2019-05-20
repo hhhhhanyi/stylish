@@ -59,7 +59,7 @@
       </div>
       <script>
         function user(user){
-          window.location = `https://hhhhhanyi.com/${user}.html`;
+          window.location = `/${user}.html`;
         }
 
         function native(){
@@ -71,7 +71,7 @@
           xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
           xhr.onreadystatechange = function () {
             if(xhr.readyState === 4 && xhr.status === 200) {
-              window.location = `https://hhhhhanyi.com/profile.html`;
+              window.location = `/profile.html`;
               // document.getElementById('demo').innerText = this.responseText;
             }
           };
@@ -90,7 +90,7 @@
             xhr.onreadystatechange = function () {
               if(xhr.readyState === 4 && xhr.status === 200) {
 		if(JSON.parse(this.responseText).users){
-	              window.location = `https://hhhhhanyi.com/profile.html`;
+	              window.location = `/profile.html`;
 		}
                 // document.getElementById('demo').innerText = this.responseText;
               }
@@ -129,4 +129,3 @@
       </script>
   </body>
 </html>
-

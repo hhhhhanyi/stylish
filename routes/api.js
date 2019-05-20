@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const redis = require('redis');
+const credentials = require('.././util/credentials.js');
 
 const db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'JIOJ24dwq9_224HU_332IWDML',
+  host     : credentials.MYSQL.host,
+	user     : credentials.MYSQL.user,
+	password : credentials.MYSQL.password,
 	database : 'stylish'
 });
 
@@ -174,4 +175,3 @@ router.get('/marketing/campaigns', (req, res) =>{
 });
 
 module.exports = router;
-
